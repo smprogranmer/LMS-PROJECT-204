@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@layer utilities {
+  nav > ul > li::after{
+    @apply content-[''] bg-blue-700 h-[3px] w-[0%] left-0 bottom-0 rounded-xl absolute duration-300
+  }
+  nav > ul > li:hover::after{
+    @apply w-[100%]
+  }
+
+}

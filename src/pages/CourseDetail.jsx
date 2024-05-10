@@ -2,7 +2,7 @@ import { FaStar } from "react-icons/fa6";
 import avatar from "../assets/2.jpg";
 import image from "../assets/1.jpg";
 
-const Banner = () => {
+const CourseDetail = () => {
   return (
     <>
       <div className="w-screen h-full px-[5%] pt-5">
@@ -60,4 +60,4 @@ const Banner = () => {
     </>
   );
 };
-export default Banner;
+export default CourseDetail;
