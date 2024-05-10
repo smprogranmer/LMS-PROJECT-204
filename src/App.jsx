@@ -1,14 +1,22 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Spline from "@splinetool/react-spline";
 import "./App.css";
-
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Loader from "./pages/Loader/Loader";
+import NotFound from "./pages/NotFound/NotFound";
+import Home from "./pages/Home/Home";
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
-    <div>
-      LMS PROJECT 2024
-    </div>
+    <Router>
+      {/* Header  */}
+      <Suspense fallback={<Loader/>}>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="*" element={<NotFound/>}/>
+        </Routes>
+      </Suspense>
+    </Router>
   );
 }
 
