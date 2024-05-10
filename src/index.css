@@ -10,7 +10,7 @@
 
 @layer utilities {
   nav > ul > li::after{
-    @apply content-[''] bg-blue-700 h-[3px] w-[0%] left-0 bottom-0 rounded-xl absolute duration-300
+    @apply content-[''] bg-blue-700 h-[3px] w-[0%] left-0 bottom-[-5px] rounded-xl absolute duration-300
   }
   nav > ul > li:hover::after{
     @apply w-[100%]

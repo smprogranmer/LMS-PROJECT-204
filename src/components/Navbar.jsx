@@ -19,7 +19,7 @@ const Navbar = () => {
           <NavLink to="/cart" className="px-2 text-2xl">
             <AiFillShopping />
           </NavLink>
-          <NavLink to="/profile" className="px-2 text-2xl">
+          <NavLink to="/login" className="px-2 text-2xl">
             <MdAccountCircle />
           </NavLink>
           <i className="fa-brands fa-twitter"></i>

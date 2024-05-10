@@ -1,8 +1,12 @@
 import React from 'react'
+import FeaturedCourse from '../components/FeaturedCourse'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    // hero section 
+
+    // featured section 
+    <FeaturedCourse/>
   )
 }
 
