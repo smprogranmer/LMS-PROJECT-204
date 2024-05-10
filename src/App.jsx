@@ -1,13 +1,12 @@
-import { useState } from "react";
-import Spline from "@splinetool/react-spline";
 import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0);
+import Banner from "./pages/banner";
+import Spline from "@splinetool/react-spline";
 
+function App() {
   return (
     <div>
-      LMS PROJECT 2024
+      <Banner />
     </div>
   );
 }
