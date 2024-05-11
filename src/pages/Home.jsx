@@ -1,13 +1,22 @@
-import React from 'react'
-import FeaturedCourse from '../components/FeaturedCourse'
+import React from "react";
+import FeaturedCourse from "../components/FeaturedCourse";
+import { Hero } from "../components/Hero";
+import About from "./About";
+import Trianers from "./Trianers";
 
 const Home = () => {
   return (
-    // hero section 
+    <>
+      {/* hero section */}
+      <Hero />
+      {/* featured section */}
+      <FeaturedCourse />s
+      {/* about us section  */}
+      <About/>
+      {/* trianers section  */}
+      <Trianers/>
+    </>
+  );
+};
 
-    // featured section 
-    <FeaturedCourse/>
-  )
-}
-
-export default Home
+export default Home;

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 py-7">
+    <footer className="bg-gray-800 py-7 mt-5">
       <div className=" grid grid-cols-4 gap-4 w-[92%] mx-[auto]">
         <div className="">
           <a href="" className="logo"></a>
@@ -21,7 +21,7 @@ const Footer = () => {
           <ul>
             {footerMenus.map(({ name, path }, index) => (
               <li className="my-2 relative text-xl" key={index}>
-                <NavLink className='text-white' to={path}>{name}</NavLink>
+                <NavLink className='text-white hover:text-blue-400' to={path}>{name}</NavLink>
               </li>
             ))}
           </ul>
@@ -31,7 +31,7 @@ const Footer = () => {
           <ul>
             {footerPrimery.map(({ name, path }, index) => (
               <li className="my-2 relative text-xl" key={index}>
-                <NavLink className='text-white' to={path}>{name}</NavLink>
+                <NavLink className='text-white hover:text-blue-400' to={path}>{name}</NavLink>
               </li>
             ))}
           </ul>
@@ -41,10 +41,10 @@ const Footer = () => {
 
           <ul>
             <li>
-              <NavLink className='text-white block mb-2'  to="">01525664646</NavLink>
+              <NavLink className='text-white block mb-2 hover:text-blue-400'  to="">01525664646</NavLink>
             </li>
             <li>
-              <NavLink className='text-white'  to="">abc@gmail.com</NavLink>
+              <NavLink className='text-white hover:text-blue-400'  to="">abc@gmail.com</NavLink>
             </li>
           </ul>
           <div className="icons"></div>

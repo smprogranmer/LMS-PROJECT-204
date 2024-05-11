@@ -5,7 +5,7 @@ import { AiFillShopping, AiOutlineSearch } from "react-icons/ai";
 import { MdAccountCircle } from "react-icons/md";
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between container px-12 h-16 shadow-lg ">
+    <nav className="flex sticky top-0  z-50 bg-white items-center justify-between container px-12 h-16 shadow-lg ">
       <Link className="text-2xl font-bold">LMS</Link>
       <ul className="flex">
         {pages.map(({name,path},index) => <li className="mx-4 relative text-xl" key={index}><NavLink to={path}>{name}</NavLink></li>)}
