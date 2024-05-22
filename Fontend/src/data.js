@@ -19,6 +19,29 @@ export const pages = [
     },
   
   ]
+export const sideBarItems = [
+    {
+        name:'Profile',
+        path:'/'
+    },
+    {
+        name:'My Courses',
+        path:'/myCourses'
+    },
+    {
+        name:'Cart',
+        path:'/cart'
+    },
+    {
+        name:'Log Out',
+        path:'/'
+    },
+    {
+        name:'Forget Password',
+        path:'/forgetPassword'
+    },
+  
+  ]
 export const footerMenus  = [
     {
         name:'Home',

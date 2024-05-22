@@ -69,6 +69,10 @@ const UserSchema = new Schema(
     refreshToken:{
       type:String
     },
+    myCourses:{
+      type: mongoose.Types.ObjectId,
+      ref:""
+    },
     resetPasswordToken: String,
     resetPasswerdExprie: Date,
   },
