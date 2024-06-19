@@ -4,7 +4,14 @@ import bcrypt from "bcrypt"
 import JWT from "jsonwebtoken"
 const UserSchema = new Schema(
   {
-    name: {
+    firstName: {
+      type: String,
+      required: [true, "Please Enter your name"],
+      maxLength: [30, "name should be less than 30 charator"],
+      minLength: [4, "name should be grather than 4 charator"],
+      trim:true,
+    },
+    lastName: {
       type: String,
       required: [true, "Please Enter your name"],
       maxLength: [30, "name should be less than 30 charator"],
@@ -35,11 +42,11 @@ const UserSchema = new Schema(
       type:String,
       enum:["male","female"],
     },
-    googleId:{
-      type:String,
-      requied:false,
-      uniqe:true
-    },
+    // googleId:{
+    //   type:String,
+    //   requied:false,
+    //   uniqe:true
+    // },
     // avatar:{
 
     //         public_id:{
@@ -54,27 +61,22 @@ const UserSchema = new Schema(
     // },
     role: {
       type: String,
-      emum:["admin","user"],
+      enum:["admin","user"],
       default: "user",
-    },
-    age:{
-      type:Date,
-      requied:[true,"plaese enter your Date of brith"]
     },
     verified:{
       type:Boolean,
       default:false,
       required:true,
     },
-    refreshToken:{
-      type:String
-    },
-    myCourses:{
-      type: mongoose.Types.ObjectId,
-      ref:""
-    },
+    myCourses:[
+      {
+        type: mongoose.Types.ObjectId,
+        ref:"Courses"
+      }
+    ],
     resetPasswordToken: String,
-    resetPasswerdExprie: Date,
+    resetPasswordExpire: Date,
   },
   {
     timestamps: true,

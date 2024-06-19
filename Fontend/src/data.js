@@ -1,5 +1,6 @@
 import courseOne from "./assets/1.jpg"
 import courseTwo from "./assets/courseOne.png"
+
 export const pages = [
     {
         name:'Home',
@@ -22,7 +23,7 @@ export const pages = [
 export const sideBarItems = [
     {
         name:'Profile',
-        path:'/'
+        path:'/profile'
     },
     {
         name:'My Courses',
@@ -100,8 +101,8 @@ export const footerPrimery  = [
         img:courseTwo,
         title:'Commmerce subject'
     },
-    {
-        img:courseOne,
-        title:'Commmerce subject'
-    },
+    // {
+    //     img:courseOne,
+    //     title:'Commmerce subject'
+    // },
   ]

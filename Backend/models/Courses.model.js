@@ -20,14 +20,10 @@ const CoursesSChema = new Schema(
       type: Number,
       default: 0,
     },
-    image: [
-      {
-        url: {
-          type: String,
-          required: true,
-        },
-      },
-    ],
+    courseImage: {
+      type: String, // cloudinary image url
+      required: [true, "Please enter your product image"], 
+    },
     category: {
       type: String,
       required: [true, "Please enter your product category"],
@@ -36,6 +32,12 @@ const CoursesSChema = new Schema(
       type: Number,
       default: 0,
     },
+    students:[
+      {
+        type: mongoose.Types.ObjectId,
+        ref:"Users"
+      }
+    ]
 
     // reviews:[
     //     {
@@ -64,4 +66,4 @@ const CoursesSChema = new Schema(
   }
 );
 
-export const Products = mongoose.model("Courses", CoursesSChema);
+export const Courses = mongoose.model("Courses", CoursesSChema);

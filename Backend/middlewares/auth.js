@@ -6,7 +6,6 @@ import jwt from "jsonwebtoken"
 const isAuthenticatedUser = catchAsyncError(async(req,res,next)=>{
     try {
         const {token} = req.cookies
-        console.log("🚀 ~ isAuthenticatedUser ~ token:", req.cookies)
         
         if(!token){
             return next(new ErroHandler(401,'please login to accesss'))
@@ -16,7 +15,9 @@ const isAuthenticatedUser = catchAsyncError(async(req,res,next)=>{
         if(!decodeDate){
             throw next(new ErroHandler(401,"Invalied access token. Please login againg"))
         }
-        req.users = await users.findById(decodeDate.id).select("-password")
+        req.user = decodeDate.id
+
+        console.log(decodeDate)
 
         
         next()

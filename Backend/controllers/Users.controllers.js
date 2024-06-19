@@ -1,115 +1,95 @@
 import catchAsyncError from "../middlewares/catchAsyncError.js";
 import { users } from "../models/Users.model.js";
-// import { Verify } from "../models/UsersVerify.model.js";
-import ErroHandler from "../utils/apiResponseHandler.js";
-// import sendEmail from "../utils/sendEmail.js";
-// import { sendOtp } from "../utils/sendOtp.js";
+
+import ErrorHandler from "../utils/apiResponseHandler.js";
+
 import sendToken from "../utils/sendToken.js";
-// import sendVeryToken from "../utils/sendVeriyToken.js";
 
 
 
 
+/**
+ * Handles user registration by validating input fields, checking for existing users,
+ * creating a new user, and sending a response with a token if successful.
+ */
 const registerUsers = catchAsyncError(async (req, res, next) => {
-  const { name, email, password,gender,age } = req.body;
+  const { firstName, lastName, email,phone, password, gender } = req.body;
+  console.log(firstName,lastName, email,phone, password, gender)
 
-  console.log(name,email,password,age,gender)
-  if (!name || !email || !password || !age || !gender) {
-    return next(new ErroHandler(400, "All fields are required"));
+  if (!firstName || !lastName || !email || !phone || !password || !gender) {
+    return next(new ErrorHandler(400, "All fields are required"));
   }
 
-  const existingUser = await users.findOne({
-    $or: [{ email }],
-  });
+  const existingUser = await users.findOne({ email });
 
   if (existingUser) {
-    return next(
-      new ErroHandler(409, "User with email already exit,Please login")
-    );
+    return next(new ErrorHandler(409, "User with email already exists. Please login."));
   }
 
-  const newUsers = users.create({
-    name,
-    email,
-    password,
-    age,
-    gender
-  });
+  const newUsers = await users.create({ firstName,lastName, email,phone, password, gender });
+  console.log("🚀 ~ registerUsers ~ newUsers:", newUsers)
 
-  // await newUser.save();
-
-  // await sendOtp(email,name);
-
-  // await otp.save();
-
- 
-
- 
-
+  // sendToken(newUsers, 201, res);
+  
   res.status(200).json({
     success: true,
-    message: "Account created succesfully",
+    message: "Account created successfully",
     newUsers,
   });
 
-  sendToken(Users, 201, res);
 });
 
 const loginUsers = catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return next(new ErroHandler(500, "invalied email and password"));
+    return next(new ErrorHandler(500, "Invalid email or password"));
   }
 
-  // console.log("hi")``
-  const Users = await users
-    .findOne({
-      $or: [{ email }],
-    })
-    .select("+password");
+  const user = await users.findOne({ email }).select("+password");
+  console.log("🚀 ~ loginUsers ~ user:", user)
 
-  if (!Users) {
-    return next(new ErroHandler(500, "Invalied user credentials"));
+  if (!user || !(await user.comperPassword(password))) {
+    return next(new ErrorHandler(500, "Invalid user credentials"));
   }
 
-  const isPasswordMatch = await Users.comperPassword(password);
-
-  if (!isPasswordMatch) {
-    return next(new ErroHandler(500, "Invalied user credentials"));
-  }
-
-  sendToken(Users, 200, res);
+  sendToken(user, 200, res);
 });
 
+/**
+ * Handles user logout by clearing the authentication token cookie and sending a JSON response indicating successful logout.
+ */
 const logOutUsers = catchAsyncError(async (req, res, next) => {
-  res.cookie("token", null, {
-    expries: new Date(Date.now()),
-    httpOnly: true,
-  });
+  // Clear the token cookie with immediate expiration and make it httpOnly
+  res.cookie("token", null, { expires: new Date(0), httpOnly: true });
 
-  res.status(200).json({
-    success: true,
-    message: "logOut User",
-  });
+  // Send a JSON response indicating successful user logout
+  res.status(200).json({ success: true, message: "User logged out successfully" });
 });
+
+
 
 const chengePassword = catchAsyncError(async (req, res, next) => {
   const { oldPassword, newPassword } = req.body;
 
-  const Users = await users.findById(req.users.id).select("+password");
+  const user = await users.findById(req.user).select("+password");
+  console.log("🚀 ~ chengePassword ~ Users:", user)
   // console.log(Users)
 
-  const isPasswordMatch = await Users.comperPassword(oldPassword);
+  const isPasswordMatch = await user.comperPassword(oldPassword);
+  console.log("🚀 ~ chengePassword ~ isPasswordMatch:", isPasswordMatch)
 
   if (!isPasswordMatch) {
-    return next(new ErroHandler("Invalied oldPassword"), 401);
+    return next(new ErrorHandler(401,"Invalid oldPassword") );
   }
+ const check =  user.password = newPassword;
+  console.log("🚀 ~ chengePassword ~ check:", check)
+  // console.log(hashedPassword)
+  await user.save();
 
-  Users.password = newPassword;
-  await Users.save();
+  sendToken(user, 200, res);
 
-  sendToken(Users, 200, res);
+  res.status(200).json({success: true, message:"password change successfully"})
 });
 
 const getAllUsers = catchAsyncError(async (req, res, next) => {
@@ -151,7 +131,7 @@ const deleteUsers = catchAsyncError(async (req, res, next) => {
   const Users = await users.findById(req.params.id);
 
   if (!Users) {
-    return next(new ErroHandler("user dose not exit"), 404);
+    return next(new ErrorHandler("user dose not exit"), 404);
   }
 
   await Users.remove();
@@ -168,6 +148,4 @@ export {
   upgradeProfile,
   getSingleUser,
   deleteUsers,
-  // verifyUser,
-  // sendEmailOtp,
 };

@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import { featuredCourses } from "../data";
+import { courses } from "../services/course-service";
 
 const FeaturedCourse = () => {
+  const [Courses, setCourse] = useState([])
+  useEffect(() => {
+    courses()
+        .then(({data :{result}}) => {
+            setCourse(result.slice(0,3))
+            console.log("🚀 ~ Courses ~ Course:", result.slice(0, 3))
+        })
+        .catch((err) => console.log(err))
+}, [])
+  
+  
   return (
     <section className="my-8">
       <div className="text-center">
@@ -13,9 +25,9 @@ const FeaturedCourse = () => {
           perspiciatis saepe.
         </p>
       </div>
-      <div className="w-[80%] mx-[auto] grid grid-cols-4 gap-4">
+      <div className="w-[80%] mx-[auto] grid grid-cols-3 gap-4">
       {
-        featuredCourses.map((courses,index) => <Card {...courses} key={index}/> )
+        Courses.map((courses,index) => <Card {...courses} key={index}/> )
       }
       </div>
     </section>

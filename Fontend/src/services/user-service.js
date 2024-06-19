@@ -15,6 +15,21 @@ export const login = async (userData) =>{
   return res
 }
 
+export const singUp = async (userData) => {
+  const res = await myAxios.post('users/register',userData)
+  return res
+}
+export const forgetPassword = async (userData) => {
+  const res = await myAxios.put('me/change-password',userData)
+  return res
+}
+
+export const logOut = async (userData) => {
+  const res = await myAxios.post('users/logout',userData)
+  return res
+}
+
+
 // import axios from 'axios';
 
 // const api = axios.create({

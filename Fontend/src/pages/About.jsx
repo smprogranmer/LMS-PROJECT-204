@@ -6,7 +6,7 @@ const About = () => {
     <h1 className="text-4xl text-blue-500 font-[500] text-center">About Us</h1>
       <div className="grid gap-3 w-[80%] mx-[auto] grid-cols-2 items-center my-24">
         <div>
-          <img src={aboutImg} alt="" srcset="" />
+          <img src={aboutImg} alt="" />
         </div>
         <div>
           <h1 className="text-6xl leading-tight">

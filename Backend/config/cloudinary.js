@@ -1,10 +1,3 @@
-// import {v2 as cloudinary} from 'cloudinary';
-// const cloudinary = require('cloudinary').v2;
-          
-
-
-// module.exports = cloudinary
-
 const cloudinary = require('cloudinary').v2;
 
 cloudinary.config({ 
