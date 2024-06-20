@@ -3,14 +3,17 @@ import { config } from "dotenv";
 import cookieParser from "cookie-parser";
 import apiErrorHandler from "./middlewares/apiErrorHandler.js";
 import cors from "cors";
+import usersRouter from "./routes/Users.route.js";
+import coursesRouter from "./routes/Courses.route.js";
+
 config({
   path: "./config/.env",
 });
+// const envMode = process.env.NODE_ENV.trim() || "PRODUCTION";
 
-  console.log(process.env.CLOUDINARY_CLOUD_NAME)
 // cors config 
 const corsOptions = {
-  origin: ["http://localhost:5173","http://localhost:4173",CLIENT_URL],
+  origin: ["http://localhost:5173","http://localhost:4173",process.env.CLIENT_URL],
   methods: "GET,POST,PUT,DELETE,PATCH,HEAD",
   credentials: true,
 };
@@ -27,14 +30,14 @@ app.get("/", (req, res) => {
 
 // courses()
 // routes 
-import usersRouter from "./routes/Users.route.js";
-import coursesRouter from "./routes/Courses.route.js";
-import { courses } from "./seed/user.js";
+
 app.use("/api/v1/", usersRouter);
 
 app.use("/api/v1/", coursesRouter);
 
 app.use(apiErrorHandler);
+
+
 
 export default app
 

@@ -1,11 +1,10 @@
-// const app = require('./app');
 import app from "./app.js"
-// const mongodb_url = require("./config/db");
 import mongodb_url from "./config/db.js";
-
+const PORT = process.env.PORT || 3000;
+console.log("🚀 ~ PORT:", PORT)
 mongodb_url()
 .then(() =>{
-  app.listen(process.env.PORT || 8000, (req,res) =>{
+  app.listen(PORT, (req,res) =>{
     console.log(`Server is listening on port ${process.env.PORT}`);
   })
 })
