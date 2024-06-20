@@ -29,7 +29,7 @@ const SingUp = () => {
             <div className="w-[12rem]">
               <input
                 placeholder="First Name"
-                className={`bg-white text-gray-200 border-0 rounded-md
+                className={`bg-white text-black border-0 rounded-md
                  ${
               errors.firstName ? "border-red-500 border-2" : "focus:ring-blue-500"
             }  p-2 w-full  focus:outline-none focus:ring-1
@@ -46,12 +46,12 @@ const SingUp = () => {
             <div>
               <input
                 placeholder="lastName"
-                className={`bg-white text-gray-200 border-0 rounded-md
+                className={`bg-white text-black border-0 rounded-md
                  ${
                    errors.lastName
                      ? "border-red-500 border-2"
                      : "focus:ring-blue-500"
-                 }  p-2 w-full focus:bg-gray-600 focus:outline-none focus:ring-1
+                 }  p-2 w-full focus:outline-none focus:ring-1
                  focus:ring-blue-500 transition ease-in-out duration-150`}
                 type="text"
                 {...register("lastName", {
@@ -64,12 +64,12 @@ const SingUp = () => {
             </div>
           </div>
           <input
-            type="phone"
+            type="number"
             name="phone"
             placeholder="please enter your phone number"
-            className={`bg-white text-gray-200  ${
+            className={`bg-white text-black  ${
               errors.phone ? "border-red-500 border-2" : "focus:ring-blue-500"
-            } border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1  transition ease-in-out duration-150`}
+            } border-0 rounded-md p-2 mb-4  focus:outline-none focus:ring-1  transition ease-in-out duration-150`}
             id=""
             {...register("phone", {
               required: true,
