@@ -2,14 +2,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {lazy,Suspense} from 'react'
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Loader from './pages/Loader'
+import NotFound from './pages/NotFound'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
-const Loader = lazy(() => import("./pages/Loader"));
-const NotFound = lazy(() => import("./pages/NotFound"));
 const Home = lazy(() => import("./pages/Home"));
-const Navbar = lazy(() => import("./components/Navbar"));
 const Login = lazy(() => import("./pages/Login"));
 const SingUp = lazy(() => import("./pages/SingUp"));
-const Footer = lazy(() => import("./components/Footer"));
 const MyCourses = lazy(() => import("./pages/profile/MyCourses"));
 const ProtectedRoute = lazy(() => import("./components/ProtactedRoute"));
 const ForgetPassword = lazy(() => import("./pages/profile/ForgetPassword"));

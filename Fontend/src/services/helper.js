@@ -10,7 +10,7 @@ function getCookie(name) {
 const token = getCookie('token');
 console.log("🚀 ~ token:", token);
 export const myAxios = axios.create({
-  baseURL: "http://localhost:4000/api/v1/",
+  baseURL: "https://lms-backend-nx9k.onrender.com/api/v1",
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${getCookie('token')}}`,
