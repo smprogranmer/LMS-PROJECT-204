@@ -12,8 +12,6 @@
   "dependencies": {
     "@splinetool/react-spline": "^2.2.6",
     "axios": "^1.6.8",
-    "i": "^0.3.7",
-    "js-cookie": "^3.0.5",
     "npm": "^10.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
