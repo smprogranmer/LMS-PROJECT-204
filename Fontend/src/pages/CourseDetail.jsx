@@ -5,7 +5,7 @@ import image from "../assets/1.jpg";
 import Review from "../components/accordion/Review";
 import OverView from "../components/accordion/OverView";
 import Instractor from "../components/accordion/Instractor";
-import { courseDetails, purchaseCourse } from "../services/user-service";
+import { courseDetails, purchaseCourse } from "../services/course-service";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 

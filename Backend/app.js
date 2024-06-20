@@ -10,7 +10,7 @@ config({
   console.log(process.env.CLOUDINARY_CLOUD_NAME)
 // cors config 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: ["http://localhost:5173","http://localhost:4173",CLIENT_URL],
   methods: "GET,POST,PUT,DELETE,PATCH,HEAD",
   credentials: true,
 };

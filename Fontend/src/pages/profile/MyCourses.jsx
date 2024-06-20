@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProfileContainer from "../../components/ProfileContainer";
-import { myCourses } from "../../services/user-service";
-import { useNavigate } from "react-router-dom";
+import { myCourses } from "../../services/course-service";
 import CourseCard from "../../components/CourseCard";
 
 const MyCourses = () => {
