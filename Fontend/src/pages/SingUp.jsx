@@ -16,7 +16,7 @@ const SingUp = () => {
     console.log("🚀 ~ onSubmit ~ userData:", userData);
     singUp(userData).then((res) => {
       toast.success("Successfully registered")
-      return navigate("/profile");
+      return navigate("/login");
     }).catch((err) => toast.error("Error registering"));
   };
 

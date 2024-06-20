@@ -24,7 +24,7 @@ const Login = () => {
     login(userData)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
-        return navigate("/profile");
+        return navigate("/");
       })
       .catch((error) =>
         toast.error(error?.response?.data?.message || "Something went wrong")
